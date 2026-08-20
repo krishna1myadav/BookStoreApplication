@@ -7,9 +7,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/book")
 public class BookController {
     private BookService bookService;
+    private final String welcomeUser;
 
-    public BookController(BookService bookService){
+    public BookController(BookService bookService, String welcomeUser){
         this.bookService = bookService;
+        this.welcomeUser = welcomeUser;
+    }
+
+    @GetMapping("/welcome")
+    public String showWelcome(){
+        return welcomeUser;
     }
 
     @GetMapping()
